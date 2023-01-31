@@ -1,0 +1,5 @@
+# Project exclude paths
+/resourcePlanner_application/target/
+/resourcePlanner_logic/target/
+/resourcePlanner_modell/target/
+/resourcePlanner_webapp/target/
