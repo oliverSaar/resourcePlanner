@@ -3,3 +3,5 @@
 /resourcePlanner_logic/target/
 /resourcePlanner_modell/target/
 /resourcePlanner_webapp/target/
+/resourcePlanner_rest/target/
+.idea/
