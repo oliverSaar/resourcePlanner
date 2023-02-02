@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>resourcePlanner_webapp</artifactId>
-    <name>resourcePlanner_webapp Maven Webapp</name>
+    <name>resourcePlanner_webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
     </dependencies>
