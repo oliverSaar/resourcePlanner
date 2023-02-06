@@ -5,3 +5,5 @@
 /resourcePlanner_webapp/target/
 /resourcePlanner_rest/target/
 .idea/
+/resourcePlanner.iml
+/resourcePlanner_webapp.iml
