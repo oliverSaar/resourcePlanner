@@ -2,7 +2,7 @@ package de.edeka.sw.webapps.resourcePlanner.model.frontend;
 
 import java.util.Date;
 
-public class project {
+public class Project {
 
     private String name;
     private Date startDate;

@@ -2,9 +2,12 @@ package de.edeka.sw.webapps.resourcePlanner.model.backend;
 
 import java.util.Date;
 
-public class project {
+public class Project {
 
     private String name;
+    private String id;
+
+
     private Date startDate;
     private Date endDate;
 
@@ -14,6 +17,14 @@ public class project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Date getStartDate() {

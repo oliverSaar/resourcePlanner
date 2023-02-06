@@ -2,7 +2,7 @@ package de.edeka.sw.webapps.resourcePlanner.model.frontend;
 
 import de.edeka.sw.webapps.resourcePlanner.model.enums.Employment;
 
-public class employee {
+public class Employee {
 
     private String employeeId;
     private String firstName;
