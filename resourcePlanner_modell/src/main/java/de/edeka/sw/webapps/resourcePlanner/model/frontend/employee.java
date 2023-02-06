@@ -1,4 +1,4 @@
-package de.edeka.sw.webapps.resourcePlanner.model;
+package de.edeka.sw.webapps.resourcePlanner.model.frontend;
 
 import de.edeka.sw.webapps.resourcePlanner.model.enums.Employment;
 

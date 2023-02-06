@@ -1,4 +1,4 @@
-package de.edeka.sw.webapps.resourcePlanner.model;
+package de.edeka.sw.webapps.resourcePlanner.model.frontend;
 
 import java.util.Date;
 
