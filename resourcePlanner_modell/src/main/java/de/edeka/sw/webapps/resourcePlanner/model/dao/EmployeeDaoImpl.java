@@ -1,6 +1,6 @@
 package de.edeka.sw.webapps.resourcePlanner.model.dao;
 
-import de.edeka.sw.webapps.resourcePlanner.model.backend.Employee;
+import de.edeka.sw.webapps.resourcePlanner.model.backend.EmployeeDO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +9,15 @@ import java.util.Objects;
 public class EmployeeDaoImpl implements EmployeeDAO {
 
 
-    private List<Employee> employees = new ArrayList<>();
+    private List<EmployeeDO> employees = new ArrayList<>();
 
     @Override
-    public void addEmployee(Employee employee) {
+    public void addEmployee(EmployeeDO employee) {
         employees.add(employee);
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
+    public void updateEmployee(EmployeeDO employee) {
         int index = employees.indexOf(employee);
         if (index != -1) {
             employees.set(index, employee);
@@ -30,8 +30,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee getEmployeeByID(String id) {
-        for (Employee employee : employees) {
+    public EmployeeDO getEmployeeByID(String id) {
+        for (EmployeeDO employee : employees) {
             if (Objects.equals(employee.getEmployeeId(), id)) {
                 return employee;
             }
@@ -40,7 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeDO> getAllEmployees() {
         return employees;
     }
 }
