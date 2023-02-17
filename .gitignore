@@ -2,11 +2,9 @@
 .idea
 .vagrant
 *.iml
-resourcePlanner_webapp/src/main/node_modules
-resourcePlanner_webapp/src/main/node
-resourcePlanner_webapp/src/main/.angular
-
-
+resourcePlanner_webapp/src/main/webapp/node_modules
+resourcePlanner_webapp/src/main/webapp/node
+resourcePlanner_webapp/src/main/webapp/.angular
 /tmp
 /logs
 config.yaml
