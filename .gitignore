@@ -1,10 +1,14 @@
 # Project exclude paths
-/resourcePlanner_application/target/
-/resourcePlanner_logic/target/
-/resourcePlanner_modell/target/
-/resourcePlanner_webapp/target/
-/resourcePlanner_rest/target/
-.idea/
-/resourcePlanner.iml
-/resourcePlanner_webapp.iml
-/resourcePlanner_backend/target/
+.idea
+.vagrant
+*.iml
+resourcePlanner_webapp/src/main/node_modules
+resourcePlanner_webapp/src/main/node
+resourcePlanner_webapp/src/main/.angular
+
+
+/tmp
+/logs
+config.yaml
+resourcePlanner.jar
+**/target
