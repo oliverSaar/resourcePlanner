@@ -10,12 +10,11 @@
         <module>resourcePlanner_logic</module>
         <module>resourcePlanner_application</module>
         <module>resourcePlanner_backend</module>
-        <module>resourcePlanner_webapp</module>
         <module>resourcePlanner_modell</module>
         <module>resourcePlanner_rest</module>
+        <module>resourcePlanner_webapp</module>
     </modules>
     <name>resourcePlanner_parent</name>
-    <url>http://maven.apache.org</url>
 
     <dependencies>
         <dependency>
