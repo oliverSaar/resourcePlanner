@@ -14,15 +14,22 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import {CalendarComponent} from './calendar/calendar.component';
 import {AppRoutingModule} from './app_routing/app-routing.module';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {EmployeesComponent} from './employees/employees.component';
+import {ProjectsComponent} from './projects/projects.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
+    EmployeesComponent,
+    ProjectsComponent,
     SafeHtmlPipe
   ],
   imports: [
+    MatButtonToggleModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
