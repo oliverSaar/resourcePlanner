@@ -1,8 +1,67 @@
-.example-container {
+@use '../styles/styles_variables.scss' as sv;
+
+.is-active {
+  font-weight: bold;
+  color: sv.$isActiveColor !important;
+}
+
+.version {
+  z-index: 2;
   position: absolute;
-  top: 0;
+  left: 1px;
   bottom: 0;
-  left: 0;
-  right: 0;
-  background: #eee;
+  opacity: 0.5;
+  font-size: 12px;
+  height: 16px;
+  overflow: hidden;
+}
+
+
+::ng-deep.mat-drawer {
+  overflow-x: hidden;
+}
+
+mat-toolbar {
+  & > img {
+    margin-right: 8px;
+  }
+
+  & > .show-element {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+  }
+
+  &:hover > .show-element {
+    width: 0px;
+    transition: 0.3s;
+  }
+
+  & > .hide-element {
+    overflow: hidden;
+    width: 0px;
+    transition: 0.3s;
+  }
+
+  &:hover > .hide-element, & > .hide-element:focus {
+    width: 40px;
+    transition: 0.3s;
+
+    & + .show-element {
+      width: 0px;
+      transition: 0.3s;
+    }
+  }
+
+  & > .title {
+    overflow: hidden;
+    height: 40px;
+    transition: 0.3s;
+  }
+
+  &:hover > .title {
+    height: 0px;
+    transition: 0.3s;
+  }
 }

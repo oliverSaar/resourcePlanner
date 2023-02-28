@@ -1,4 +1,78 @@
-<mat-sidenav-container>
-  <mat-sidenav>Start</mat-sidenav>
-  <mat-sidenav-content>Main</mat-sidenav-content>
-</mat-sidenav-container>
+<div fxLayout="column" fxFlexFill class="mat-app-background">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()" class="hide-element">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="res/cdi_ico_mono_invert_fit.svg" class="show-element">
+    <span class="spacer"></span>
+    <span class="title">{{ title }}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="themeService.toggleTheme()" class="hide-element">
+      <mat-icon>
+        {{ theme.currentTheme == theme.Mode.dark ? 'light_mode' : 'dark_mode' }}
+      </mat-icon>
+    </button>
+    <button mat-icon-button class="show-element" tabindex="-1">
+      <mat-icon>
+        more_horiz
+      </mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlex autosize>
+    <mat-sidenav [mode]="'side'" opened #drawer>
+      <mat-nav-list>
+        <h2 matSubheader [fxHide.xs]="true">Übersicht</h2>
+<!--        <mat-list-item-->
+<!--          [routerLink]="['/dashboard']"-->
+<!--          [routerLinkActive]="['is-active']"-->
+<!--        >-->
+<!--          <mat-icon matListIcon>dashboard</mat-icon>-->
+<!--          Dashboard-->
+<!--        </mat-list-item>-->
+<!--        <mat-list-item-->
+<!--          [routerLink]="['/map']"-->
+<!--          [routerLinkActive]="['is-active']"-->
+<!--        >-->
+<!--          <mat-icon matListIcon>map</mat-icon>-->
+<!--          Karte-->
+<!--        </mat-list-item>-->
+
+        <mat-divider></mat-divider>
+
+        <h2 matSubheader [fxHide.xs]="true">Termine</h2>
+        <mat-list-item
+          [routerLink]="['/calendar']"
+          [routerLinkActive]="['is-active']"
+        >
+          <mat-icon matListIcon>calendar_month</mat-icon>
+          Kalender
+        </mat-list-item>
+<!--        <mat-list-item-->
+<!--          [routerLink]="['/planner']"-->
+<!--          [routerLinkActive]="['is-active']"-->
+<!--        >-->
+<!--          <mat-icon matListIcon>schedule</mat-icon>-->
+<!--          Planer-->
+<!--        </mat-list-item>-->
+
+        <mat-divider></mat-divider>
+
+        <h2 matSubheader [fxHide.xs]="true">Allgemein</h2>
+        <mat-list-item
+          [routerLink]="['/settings']"
+          [routerLinkActive]="['is-active']"
+        >
+          <mat-icon matListIcon>settings</mat-icon>
+          Einstellungen
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <div class="version">
+    {{ version }}
+  </div>
+</div>
