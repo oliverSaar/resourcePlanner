@@ -9,9 +9,6 @@
 
         <non-jta-data-source>jdbc/BooksDS</non-jta-data-source>
 
-        <class>de.edeka.sw.webapps.resourcePlanner.model.employee</class>
-        <class>de.edeka.sw.webapps.resourcePlanner.model.project</class>
-
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="javax.persistence.schema-generation.create-source" value="metadata"/>

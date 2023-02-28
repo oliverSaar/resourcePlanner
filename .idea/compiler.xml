@@ -20,7 +20,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="resourcePlanner" target="1.8" />
       <module name="resourcePlanner_Application" target="1.5" />
       <module name="resourcePlanner_model" target="19" />
     </bytecodeTargetLevel>
