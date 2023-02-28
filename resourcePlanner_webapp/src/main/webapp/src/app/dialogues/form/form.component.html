@@ -1,0 +1,318 @@
+<h1 mat-dialog-title>
+  <span>{{
+    isHabit
+      ? isEditMode
+        ? "Gewohnheit Bearbeiten"
+        : "Neue Gewohnheit"
+      : isEditMode
+        ? "Termin Bearbeiten"
+        : "Neuer Termin"
+    }}</span>
+  <span class="spacer"></span>
+  <button
+    mat-flat-button
+    color="warn"
+    mat-dialog-close="Delete"
+    *ngIf="isEditMode && isDialog"
+  >
+    Löschen
+  </button>
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="deleteClicked()"
+    *ngIf="isEditMode && !isDialog"
+  >
+    Löschen
+  </button>
+  <button mat-icon-button *ngIf="!isEditMode && isHabit" (click)="openHelp()">
+    <mat-icon> help</mat-icon>
+  </button>
+</h1>
+<div mat-dialog-content>
+  <table [formGroup]="form">
+    <tbody>
+    <tr>
+      <td>
+        <!-- Titel -->
+        <mat-form-field>
+          <mat-label>Titel</mat-label>
+          <input
+            matInput
+            #title
+            type="text"
+            formControlName="title"
+            required
+            (keyup)="refresh?.next()"
+          />
+          <button matSuffix mat-icon-button (click)="title.value = ''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </td>
+      <td align="right">
+        <!-- Color -->
+        <mat-form-field
+          appearance="outline"
+          class="color-selector"
+          (click)="colorPrimary.click()"
+        >
+          <input
+            #colorPrimary
+            matInput
+            type="color"
+            formControlName="colorPrimary"
+            (ngModelChange)="refresh?.next()"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Beschreibung</mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- Description -->
+          <mat-form-field appearance="fill">
+            <mat-label>Beschreibung</mat-label>
+            <textarea matInput formControlName="description" (keyup)="refresh?.next()"></textarea>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </td>
+    </tr>
+    <tr *ngIf="!isRepeating">
+      <td colspan="2">
+        <!-- Date-Range -->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Zeitraum</mat-label>
+          <mat-date-range-input [rangePicker]="rangePicker">
+            <input
+              matStartDate
+              placeholder="Startdatum"
+              formControlName="startDate"
+              (ngModelChange)="refresh?.next()"
+            />
+            <input
+              matEndDate
+              placeholder="Enddatum"
+              formControlName="endDate"
+              (ngModelChange)="refresh?.next()"
+            />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="rangePicker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #rangePicker></mat-date-range-picker>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr *ngIf="isRepeating">
+      <td>
+        <!-- Date-Start -->
+        <mat-form-field appearance="fill">
+          <mat-label>Startdatum</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            formControlName="startDate"
+            (ngModelChange)="refresh?.next()"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </td>
+      <td>
+        <!-- Days-Select -->
+        <mat-form-field appearance="fill">
+          <mat-label>Tage</mat-label>
+          <mat-select
+            formControlName="days"
+            multiple
+            (ngModelChange)="refresh?.next()"
+          >
+            <mat-option
+              *ngFor="let day of days"
+              [value]="day.index"
+              [disabled]="isCurrentDay(day.index)"
+            >
+              {{ day.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!-- Time-Begin -->
+        <mat-form-field appearance="fill">
+          <mat-label>Beginn</mat-label>
+          <input
+            matInput
+            #timeBeginn
+            type="datetime"
+            mwlFlatpickr
+            [convertModelValue]="true"
+            dateFormat="H:i"
+            altFormat="H:i"
+            placeholder="Not set"
+            [noCalendar]="true"
+            [enableTime]="true"
+            [time24hr]="true"
+            formControlName="startTime"
+            (ngModelChange)="refresh?.next()"
+          />
+          <button matSuffix mat-icon-button (click)="timeBeginn.focus()">
+            <mat-icon>schedule</mat-icon>
+          </button>
+        </mat-form-field>
+      </td>
+      <td>
+        <!-- Time-End -->
+        <mat-form-field appearance="fill">
+          <mat-label>Ende</mat-label>
+          <input
+            matInput
+            #timeEnd
+            type="datetime"
+            mwlFlatpickr
+            [convertModelValue]="true"
+            dateFormat="H:i"
+            altFormat="H:i"
+            placeholder="Not set"
+            [noCalendar]="true"
+            [enableTime]="true"
+            [time24hr]="true"
+            formControlName="endTime"
+            [minDate]="minTime()"
+            (ngModelChange)="refresh?.next()"
+          />
+          <button matSuffix mat-icon-button (click)="timeEnd.click()">
+            <mat-icon>schedule</mat-icon>
+          </button>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr *ngIf="isHabit">
+      <td>
+        <!-- Ideal-Time -->
+        <mat-form-field appearance="fill">
+          <mat-label>Idealer Zeitraum</mat-label>
+          <input
+            matInput
+            #idealTime
+            id="idealTime"
+            type="datetime"
+            mwlFlatpickr
+            [convertModelValue]="true"
+            dateFormat="H:i"
+            altFormat="H:i"
+            placeholder="Not set"
+            [noCalendar]="true"
+            [enableTime]="true"
+            [time24hr]="true"
+            formControlName="idealTime"
+            [minDate]="minTime()"
+            [maxDate]="maxTime()"
+            (ngModelChange)="refresh?.next()"
+          />
+          <button matSuffix mat-icon-button (click)="idealTime.click()">
+            <mat-icon>schedule</mat-icon>
+          </button>
+        </mat-form-field>
+      </td>
+      <td>
+        <!-- Duration -->
+        <mat-form-field appearance="fill">
+          <mat-label>Dauer (in Minuten)</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="duration"
+            min="0"
+            step="10"
+            (ngModelChange)="refresh?.next()"
+            [max]="maxDuration()"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" *ngIf="isInitialized">
+        <!-- Repeating-Tabs (None, Deadline, Weeks) -->
+        <mat-tab-group
+          mat-align-tabs="center"
+          dynamicHeight
+          (selectedTabChange)="tabChange($event); refresh?.next()"
+          [selectedIndex]="selectedTab"
+        >
+          <mat-tab label="Keine Wiederholung" *ngIf="!isHabit"></mat-tab>
+          <mat-tab label="Wochen">
+            <!-- Week-Count -->
+            <mat-form-field appearance="fill">
+              <mat-label>Wochen</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="count"
+                min="1"
+                (ngModelChange)="refresh?.next()"
+              />
+            </mat-form-field>
+          </mat-tab>
+          <mat-tab label="Deadline">
+            <!-- Deadline-Date -->
+            <mat-form-field appearance="fill">
+              <mat-label>Deadline</mat-label>
+              <input
+                matInput
+                [matDatepicker]="deadlineDatePicker"
+                formControlName="deadline"
+                [disabled]="true"
+                (ngModelChange)="refresh?.next()"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="deadlineDatePicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker
+                #deadlineDatePicker
+                disabled="false"
+              ></mat-datepicker>
+            </mat-form-field>
+          </mat-tab>
+        </mat-tab-group>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="Cancel" *ngIf="isDialog">
+    Abbrechen
+  </button>
+  <button mat-button (click)="cancelClicked()" *ngIf="!isDialog && isEditMode">
+    Abbrechen
+  </button>
+  <span class="spacer"></span>
+  <button
+    *ngIf="!isDialog"
+    mat-stroked-button
+    (click)="saveClicked()"
+    [disabled]="!isFormValid()"
+  >
+    {{ isEditMode ? "Speichern" : "Hinzufügen" }}
+  </button>
+  <button
+    *ngIf="isDialog"
+    mat-stroked-button
+    [mat-dialog-close]="isEditMode ? 'Save' : 'Add'"
+    [disabled]="!isFormValid()"
+  >
+    {{ isEditMode ? "Speichern" : "Hinzufügen" }}
+  </button>
+</div>

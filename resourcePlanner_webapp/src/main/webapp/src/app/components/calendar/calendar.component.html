@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="calendar">
+    <div class="calendar-header">
+      <!-- Navigation -->
+      <div>
+        <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          [(ngModel)]="navigation"
+          (valueChange)="onNavigationChange($event, group)"
+        >
+          <mat-button-toggle
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+            [value]="'previous'"
+          >
+            <mat-icon>navigate_before</mat-icon>
+            <span>Vorherige</span>
+          </mat-button-toggle>
+          <mat-button-toggle
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+            [value]="'today'"
+          >
+            <span>Heute</span>
+          </mat-button-toggle>
+          <mat-button-toggle
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+            [value]="'next'"
+          >
+            <span>Nächste</span>
+            <mat-icon>navigate_next</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div style="padding-left: 10px">
+          <mat-form-field>
+            <mat-label>Abteilung</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let abteilung of abteilungen" [value]="abteilung">
+                {{abteilung}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h2 class="app-background-default">{{ viewDate | calendarDate: view + "ViewTitle":"de" }}</h2>
+
+      <!-- View-Navigation -->
+      <mat-button-toggle-group [value]="view" (valueChange)="setView($event)">
+        <mat-button-toggle [value]="CalendarView.Month"
+        >Monat
+        </mat-button-toggle
+        >
+        <mat-button-toggle [value]="CalendarView.Week">Woche</mat-button-toggle>
+        <mat-button-toggle [value]="CalendarView.Day">Tag</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <br/>
+
+    <!-- Calendar -->
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view
+        *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen"
+        [locale]="locale"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view
+        *ngSwitchCase="CalendarView.Week"
+        precision="minutes"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [locale]="locale"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view
+        *ngSwitchCase="CalendarView.Day"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [locale]="locale"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-day-view>
+    </div>
+  </div>
+
+  <!-- Floating-Actions -->
+  <div class="action-container">
+    <button mat-fab (click)="openAdd()" color="primary" class="button-add">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

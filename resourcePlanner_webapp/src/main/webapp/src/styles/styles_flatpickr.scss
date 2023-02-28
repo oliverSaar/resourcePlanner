@@ -1,0 +1,89 @@
+@use "@angular/material" as mat;
+@use "./styles_variables.scss";
+@import "~flatpickr/dist/themes/light.css";
+
+/* Mixin for  */
+@mixin flatpickr-theme($theme) {
+  $_background: mat.get-color-from-palette($theme, background);
+  $app-background-color: mat.get-color-from-palette($_background, background);
+  $_foreground: mat.get-color-from-palette($theme, foreground);
+
+  $foreground-color: mat.get-color-from-palette($_foreground, text);
+  $border-color: mat.get-color-from-palette($_foreground, divider);
+  $border: transparent;
+  $background: mat.get-color-from-palette($_background, card);
+  $hover: mat.get-color-from-palette($_background, hover);
+
+  .flatpickr-calendar.hasTime .flatpickr-time {
+    border-top: 1px solid $border-color;
+  }
+  .flatpickr-calendar.hasTime .flatpickr-time {
+    border: 1px solid $border-color;
+  }
+  .flatpickr-calendar.arrowTop:before {
+    border-bottom-color: $border;
+  }
+  .flatpickr-calendar.arrowTop:after {
+    border-bottom-color: $border;
+  }
+  .flatpickr-calendar.arrowBottom:before {
+    border-top-color: $border;
+  }
+  .flatpickr-calendar.arrowBottom:after {
+    border-top-color: $border;
+  }
+  .flatpickr-months .flatpickr-month {
+    background: $border-color;
+  }
+  .flatpickr-current-month .flatpickr-monthDropdown-months {
+    background: $border-color;
+  }
+  .flatpickr-current-month
+    .flatpickr-monthDropdown-months
+    .flatpickr-monthDropdown-month {
+    background-color: $border-color;
+  }
+  .flatpickr-weekdays {
+    background: $border-color;
+  }
+  span.flatpickr-weekday {
+    background: $border-color;
+  }
+  .flatpickr-days {
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+  }
+  .dayContainer + .dayContainer {
+    -webkit-box-shadow: -1px 0 0 $border-color;
+    box-shadow: -1px 0 0 $border-color;
+  }
+  .flatpickr-weekwrapper .flatpickr-weeks {
+    border-left: 1px solid $border-color;
+  }
+  .flatpickr-innerContainer {
+    background: $background;
+    border-bottom: 1px solid $border-color;
+  }
+  .flatpickr-time {
+    background: $background;
+  }
+  .flatpickr-time .numInputWrapper span.arrowUp:after {
+    border-bottom-color: $foreground-color;
+  }
+  .flatpickr-time .numInputWrapper span.arrowDown:after {
+    border-top-color: $foreground-color;
+  }
+  .flatpickr-time input {
+    color: $foreground-color;
+  }
+  .flatpickr-time .flatpickr-time-separator,
+  .flatpickr-time .flatpickr-am-pm {
+    color: $foreground-color;
+  }
+  .flatpickr-time input:hover,
+  .flatpickr-time .flatpickr-am-pm:hover,
+  .flatpickr-time input:focus,
+  .flatpickr-time .flatpickr-am-pm:focus {
+    background: $hover;
+  }
+}

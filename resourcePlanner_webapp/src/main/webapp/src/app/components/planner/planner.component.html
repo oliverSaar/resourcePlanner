@@ -1,0 +1,5 @@
+<div class="container">
+  <app-form *ngIf="!selectedHabit" [event]="habit" [isEditMode]="false" [isHabit]="true" (savedEvent)="addHabit($event)" class="app-card"></app-form>
+  <app-form *ngIf="selectedHabit" [event]="selectedHabit" [isEditMode]="true" [isHabit]="true" (savedEvent)="saveHabit($event)" (cancelEvent)="cancelHabit()" (deleteEvent)="deleteHabit($event)" class="app-card"></app-form>
+  <app-list-habit [habits]="data._habits" (selectedHabit)="habitSelected($event)"></app-list-habit>
+</div>

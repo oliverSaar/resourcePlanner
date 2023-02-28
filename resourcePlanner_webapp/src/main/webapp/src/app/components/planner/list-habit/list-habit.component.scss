@@ -1,0 +1,64 @@
+@use '../../../../styles/styles_variables.scss' as sv;
+
+.container {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-column-time {
+    width: 40%;
+    padding: 0px 8px;
+}
+
+.mat-column-repeat {
+    padding: 8px;
+}
+
+.color-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+}
+
+.times-display {
+    margin-top: 16px;
+    border-top: 5px dotted sv.$progressBarInactive;
+}
+
+.timespan-bar {
+    margin-top: -5px;
+    border-top: 5px solid sv.$progressBar;
+}
+
+.time-bar {
+
+    margin-top: -5px;
+    border-top: 5px solid sv.$progressBarActive;
+}
+
+.timestart-bar {
+    position: relative;
+    left: 0px;
+    top: -8px;
+    height: 11px;
+    border-left: 3px solid sv.$progressBarActiveStart;
+}
+
+.timestart-text {
+    position: relative;
+    top: -20px;
+    left: -2px
+}
+
+.day-list {
+    & .active-day:hover {
+        background-color: sv.$isActiveColor !important;
+    }
+
+    & span:not(.app-disabled) {
+        cursor: pointer;
+    }
+}

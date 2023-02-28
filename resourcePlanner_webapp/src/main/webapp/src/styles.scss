@@ -1,0 +1,198 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+/* Mixins and Variables */
+@import "./styles/styles_variables.scss";
+@import "./styles/styles_calendar.scss";
+@import "./styles/styles_flatpickr.scss";
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ResourcePlanner-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $ResourcePlanner-primary,
+        accent: $ResourcePlanner-accent,
+        warn: $ResourcePlanner-warn,
+      ),
+    )
+);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ResourcePlanner-dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $ResourcePlanner-primary,
+        accent: $ResourcePlanner-accent,
+        warn: $ResourcePlanner-warn,
+      ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@mixin app-theme($theme) {
+  $_background: mat.get-color-from-palette($theme, background);
+  $app-background-color: mat.get-color-from-palette($_background, background);
+  $_foreground: mat.get-color-from-palette($theme, foreground);
+  $app-foreground-color: mat.get-color-from-palette($_foreground, text);
+  $border-color: mat.get-color-from-palette($_foreground, divider);
+
+  /* Mixins */
+  @include calendar-theme($theme);
+  @include flatpickr-theme($theme);
+  @include mat.all-component-colors($theme);
+
+  /* App styling */
+  .app-background {
+    background: mat.get-color-from-palette($_background, card);
+  }
+
+  .app-background-default {
+    background: mat.get-color-from-palette($_background, background);
+  }
+
+  .app-foreground {
+    color: $app-foreground-color;
+  }
+
+  .app-border {
+    border-color: $border-color !important;
+  }
+
+  .app-hover:hover {
+    background-color: mat.get-color-from-palette($_background, disabled-button);
+    transition-duration: 0.2s;
+  }
+
+  .app-disabled {
+    background-color: mat.get-color-from-palette($_background, disabled-button);
+    color: mat.get-color-from-palette($_foreground, disabled-button);
+  }
+
+  .app-card {
+    @extend .mat-elevation-z8;
+    @extend .app-background;
+    border-radius: 8px !important;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @extend .app-background;
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: mat.get-color-from-palette($ResourcePlanner-primary, default);
+    border-radius: 12px;
+
+    &:hover {
+      background: mat.get-color-from-palette($ResourcePlanner-accent, default);
+    }
+  }
+
+  ::-webkit-scrollbar-corner {
+    @extend .app-background;
+  }
+
+  & * {
+    scrollbar-color: mat.get-color-from-palette($ResourcePlanner-primary, default) mat.get-color-from-palette($_background, card) !important;
+    scrollbar-width: thin !important;
+  }
+}
+
+/* Themes */
+.light-theme {
+  @include app-theme($ResourcePlanner-theme);
+}
+
+.dark-theme {
+  @include app-theme($ResourcePlanner-dark-theme);
+}
+
+/* Default theme */
+@include mat.all-component-themes($ResourcePlanner-theme);
+@include calendar-theme($ResourcePlanner-theme);
+
+/* Global styling */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* General */
+.none-selectable {
+  user-select: none !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Timespan */
+.times-display {
+  width: 100%;
+  margin-bottom: 16px;
+  border-top: 5px dotted $progressBarInactive;
+}
+
+.timespan-bar {
+  margin-top: -5px;
+  border-top: 5px solid $progressBar;
+}
+
+.time-bar {
+  margin-top: -5px;
+  border-top: 5px solid $progressBarActive;
+}
+
+.timestart-bar {
+  position: relative;
+  left: 0px;
+  top: -8px;
+  height: 11px;
+  border-left: 3px solid $progressBarActiveStart;
+}
+
+.timestart-text {
+  position: relative;
+  top: -20px;
+  left: -2px;
+}
+
+/* Day-List */
+.day-list {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid;
+  border-radius: 32px;
+
+  & span {
+    text-align: center;
+    border-radius: 50%;
+    padding: 8px;
+    width: 20px;
+  }
+
+  & .active-day {
+    background-color: $defaultPrimary;
+    color: white;
+  }
+}

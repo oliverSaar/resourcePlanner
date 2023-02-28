@@ -1,0 +1,20 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#ffffff" x="0.17743" y="0.17743" width="300" height="300" id="svg_1" rx="25" stroke-width="3"/>
+  <rect fill="#009688" x="25.17743" y="25.17743" width="75" height="50" id="svg_2" rx="25" stroke-width="2"/>
+  <rect fill="#009688" stroke="#009688" x="25.17743" y="100.17743" width="250" height="175" id="svg_3" stroke-width="2" rx="25"/>
+  <rect stroke="#009688" fill="#ffffff" x="25.17743" y="100.17743" width="250" height="50" id="svg_14" stroke-width="2" rx="25"/>
+  <rect fill="#009688" x="25.17743" y="125.17743" width="250" height="125" id="svg_15"/>
+  <line fill="none" stroke="#ffffff" x1="75.17743" y1="100.17743" x2="75.17743" y2="275.17743" id="svg_5"/>
+  <line fill="none" stroke="#ffffff" x1="126.17743" y1="100.17743" x2="126.17743" y2="275.17743" id="svg_6"/>
+  <line fill="none" stroke="#ffffff" x1="175.17743" y1="100.17743" x2="175.17743" y2="275.17743" id="svg_7"/>
+  <line fill="none" stroke="#ffffff" x1="225.17743" y1="100.17743" x2="225.17743" y2="275.17743" id="svg_8"/>
+  <line fill="none" stroke="#ffffff" stroke-width="2" x1="25.17743" y1="125.17743" x2="275.17743" y2="125.17743" id="svg_9"/>
+  <line fill="none" stroke="#ffffff" x1="25.17743" y1="175.17743" x2="275.17743" y2="175.17743" id="svg_10"/>
+  <line fill="none" stroke="#ffffff" x1="25.17743" y1="225.17743" x2="275.17743" y2="225.17743" id="svg_11"/>
+  <rect fill="none" stroke="#009688" x="25.17743" y="100.17743" width="250" height="175" id="svg_16" stroke-width="2" rx="25"/>
+  <text fill="#009688" stroke="#009688" stroke-width="3" x="190" y="70" id="svg_17" font-size="50" font-family="'Cabin'" text-anchor="start" xml:space="preserve">CDI</text>
+ </g>
+
+</svg>

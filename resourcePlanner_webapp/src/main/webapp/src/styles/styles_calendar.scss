@@ -1,0 +1,35 @@
+@use "@angular/material" as mat;
+@use 'styles_variables.scss';
+@import '~angular-calendar/scss/angular-calendar.scss';
+
+@mixin calendar-theme($theme) {
+
+  $_background: mat.get-color-from-palette($theme, background);
+  $app-background-color: mat.get-color-from-palette($_background, background);
+  $_foreground: mat.get-color-from-palette($theme, foreground);
+  $app-foreground-color: mat.get-color-from-palette($_foreground, text);
+  $border-color: mat.get-color-from-palette($_foreground, divider);
+
+  @include cal-theme(
+    (
+      event-color-primary: mat.get-color-from-palette($ResourcePlanner-primary, default),
+      event-color-secondary: mat.get-color-from-palette($ResourcePlanner-accent, default),
+      border-color: $border-color,
+      bg-primary: mat.get-color-from-palette($_background, card),
+      bg-secondary: mat.get-color-from-palette($_background, app-bar),
+      bg-active: mat.get-color-from-palette($ResourcePlanner-accent, 400),
+      today-bg: $app-background-color,
+      weekend-color: mat.get-color-from-palette($ResourcePlanner-primary, 200),
+      badge-color: mat.get-color-from-palette($ResourcePlanner-primary, 400),
+      current-time-marker-color: mat.get-color-from-palette($ResourcePlanner-primary, 200),
+      white: $app-foreground-color,
+      gray: $app-background-color,
+      black: #000,
+    )
+  )
+
+}
+
+.cal-open-day-events {
+  box-shadow: none !important;
+}

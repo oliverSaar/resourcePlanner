@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="actions-list">
+    <!-- Download -->
+    <div class="list-action-item">
+      <h3>Aktuelle Daten herunterladen:</h3>
+      <button mat-flat-button (click)="exchangeService.download()">
+        <mat-icon> download</mat-icon>
+        Download
+      </button>
+    </div>
+    <!-- Upload -->
+    <div class="list-action-item">
+      <h3>Neue Daten hochladen:</h3>
+      <button mat-flat-button (click)="upload.click()">
+        <mat-icon> upload</mat-icon>
+        Upload
+      </button>
+      <input
+        hidden
+        type="file"
+        #upload
+        (change)="exchangeService.upload($event)"
+      />
+    </div>
+  </div>
+
+  <!-- Misc -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header> Debug</mat-expansion-panel-header>
+    <pre>{{ obj | json }}</pre>
+  </mat-expansion-panel>
+</div>

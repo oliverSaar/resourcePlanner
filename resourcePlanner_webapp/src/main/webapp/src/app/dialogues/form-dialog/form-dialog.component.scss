@@ -1,0 +1,19 @@
+h1.mat-dialog-title {
+  display: flex;
+}
+
+table mat-form-field {
+  width: 100%;
+}
+
+.color-selector {
+  width: 33% !important;
+}
+
+::ng-deep.mat-tab-body {
+  padding: 8px;
+}
+
+::ng-deep.mat-tab-body-content {
+  overflow-y: hidden !important;
+}

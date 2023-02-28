@@ -1,0 +1,20 @@
+<svg width="304" height="304" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#fff" stroke="#000" x="2" y="2" width="300" height="300" id="svg_1" rx="25" stroke-width="3"/>
+  <rect fill="#009688" x="27" y="27" width="75" height="50" id="svg_2" rx="25" stroke-width="2"/>
+  <rect fill="#fff" stroke="#dbdbdb" x="27" y="102" width="250" height="175" id="svg_3" stroke-width="2" rx="25"/>
+  <rect fill="#ffc107" stroke="#dbdbdb" x="27" y="102" width="250" height="50" id="svg_14" stroke-width="2" rx="25"/>
+  <rect fill="#fff" x="27" y="127" width="250" height="125" id="svg_15"/>
+  <line fill="none" stroke="#bdbdbd" x1="77" y1="102" x2="77" y2="277" id="svg_5"/>
+  <line fill="none" stroke="#bdbdbd" x1="128" y1="102" x2="128" y2="277" id="svg_6"/>
+  <line fill="none" stroke="#bdbdbd" x1="177" y1="102" x2="177" y2="277" id="svg_7"/>
+  <line fill="none" stroke="#bdbdbd" x1="227" y1="102" x2="227" y2="277" id="svg_8"/>
+  <line fill="none" stroke="#ff0000" stroke-width="2" x1="27" y1="127" x2="277" y2="127" id="svg_9"/>
+  <line fill="none" stroke="#bdbdbd" x1="27" y1="177" x2="277" y2="177" id="svg_10"/>
+  <line fill="none" stroke="#bdbdbd" x1="27" y1="227" x2="277" y2="227" id="svg_11"/>
+  <rect fill="none" stroke="#dbdbdb" x="27" y="102" width="250" height="175" id="svg_16" stroke-width="2" rx="25"/>
+  <text fill="#ffffff" stroke="#dbdbdb" stroke-width="0" x="42" y="62" id="svg_17" font-size="30" font-family="'Cabin'" text-anchor="start" xml:space="preserve" stroke-dasharray="2,2">CDI</text>
+ </g>
+
+</svg>

@@ -1,0 +1,18 @@
+.container {
+    padding: 8px;
+}
+
+.actions-list {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+.list-action-item {
+    width: 50%;
+}
+
+pre {
+    background-color: gray;
+    color: white;
+}

@@ -1,0 +1,54 @@
+.container {
+  padding: 8px;
+}
+
+.calendar {
+  padding: 0px;
+}
+
+.calendar-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: sticky;
+  top: 4px;
+  z-index: 3;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  & h2 {
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 0px !important;
+  }
+}
+
+.action-container {
+  margin-top: -72px;
+  position: sticky;
+  bottom: 16px;
+  float: right;
+}
+
+.button-add {
+  position: relative;
+  right: 16px;
+}
+
+.cal-event-title {
+  & b {
+    margin-right: 4px;
+  }
+}
+
+.cal-event-description {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cal-habit-title {
+  text-decoration: underline dashed 1px;
+}
