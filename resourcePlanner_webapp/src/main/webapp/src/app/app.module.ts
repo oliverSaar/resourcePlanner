@@ -19,6 +19,7 @@ import { HabitHelpComponent } from './dialogues/habit-help/habit-help.component'
 import { FormComponent } from './dialogues/form/form.component';
 import { FormDialogComponent } from './dialogues/form-dialog/form-dialog.component';
 import { MapComponent } from './components/map/map.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 /**
  * Registering Language Localization
@@ -38,6 +39,7 @@ registerLocaleData(localeDe);
     FormComponent,
     FormDialogComponent,
     MapComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,6 @@ export interface Employee {
   lastName: string;
   team: string;
   department: string;
-  employement: Employment;
+  employment: Employment;
   kostenstelle: number;
 }

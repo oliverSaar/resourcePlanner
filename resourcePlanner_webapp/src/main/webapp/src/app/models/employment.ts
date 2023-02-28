@@ -1,6 +1,6 @@
-export enum Employment{
+export enum Employment {
 
-  VOLLZEIT,
-  TEILZEIT
+  VOLLZEIT = "Vollzeit",
+  TEILZEIT = "Teilzeit"
 
 }
